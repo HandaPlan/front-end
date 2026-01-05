@@ -194,7 +194,7 @@ export default function HomePage() {
                         </div>
 
                         {/* 체크리스트 섹션 */}
-                        <CheckList title={currentData.mainGoal.name} subGoals={currentData.subGoals} />
+                        <CheckList title={currentData.mainGoal.name} mainGoalId={currentData.mainGoal.id} subGoals={currentData.subGoals} />
                     </>
                 )}
             </div>

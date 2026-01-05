@@ -4,7 +4,7 @@ import GoalTile from "./GoalTile";
 import DailyActionModal from "./DailyActionModal"; // 모달 컴포넌트 이름 수정
 import { useNavigate } from "react-router-dom";
 
-export default function CheckList({ title, subGoals }) {
+export default function CheckList({ title, mainGoalId, subGoals }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedGoal, setSelectedGoal] = useState(null); // 모달에 표시할 목표 정보 저장
     const navigate = useNavigate();
@@ -92,7 +92,7 @@ export default function CheckList({ title, subGoals }) {
                 <button
                     className="border border-customMain text-customMain py-3 px-3 rounded-xl shadow-lg text-xs font-semibold
                    active:scale-95 active:bg-gray-200 transition transform duration-100 ease-in-out"
-                    onClick={() => navigate('/myart')}
+                    onClick={() => navigate(`/myart/${mainGoalId}`)}
                 >
                     메인골 상세페이지 바로가기
                 </button>
