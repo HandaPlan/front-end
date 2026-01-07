@@ -109,13 +109,22 @@ export default function DailyActionModal({ isOpen, onClose, goal, color, onSaved
             {/* 저장 버튼 */}
             <div className="mt-4 flex justify-center">
                 {(dailyActions.length > 0 && !isAttained) ? (
-                    <button
-                        type="button"
-                        className="w-auto bg-customMain text-white py-3 px-5 rounded-md shadow-lg text-xs font-semibold"
-                        onClick={handleSave}
-                    >
-                        저장
-                    </button>
+                    <div className="flex gap-3 justify-center">
+                        <button
+                            type="button"
+                            className="w-auto bg-gray-100 text-gray-400 py-3 px-5 rounded-md text-xs font-semibold"
+                            onClick={onClose}
+                        >
+                            닫기
+                        </button>
+                        <button
+                            type="button"
+                            className="w-auto bg-customMain text-white py-3 px-5 rounded-md text-xs font-semibold"
+                            onClick={handleSave}
+                        >
+                            저장
+                        </button>
+                    </div>
                 ) : (
                     <button
                         type="button"
