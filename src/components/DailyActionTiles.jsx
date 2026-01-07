@@ -144,7 +144,7 @@ export default function DailyActionTiles({ title, dailyActions, color, importedG
 
                     return (
                         <button key={`add-${index}`} className="w-full">
-                            <GoalTile type="add" />
+                            <GoalTile type="empty" />
                         </button>
                     );
                 })}
