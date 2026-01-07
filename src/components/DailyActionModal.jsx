@@ -3,7 +3,7 @@ import DailyActionCheck from "./DailyActionCheck";
 import ModalLayout from "./ModalLayout";
 import api from "../api/axiosInstance";
 
-export default function DailyActionModal({ isOpen, onClose, goal, color }) {
+export default function DailyActionModal({ isOpen, onClose, goal, color, onSaved }) {
     const [dailyActions, setDailyActions] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -58,6 +58,8 @@ export default function DailyActionModal({ isOpen, onClose, goal, color }) {
             if (res.data?.code === "200") {
                 alert("저장이 완료되었습니다!");
                 onClose(); // 저장 성공 후 모달 닫기
+                // HomePage에 “저장 완료” 신호 보내서 refetch
+                await onSaved?.();
             } else {
                 alert("저장에 실패했습니다.");
             }
@@ -66,7 +68,7 @@ export default function DailyActionModal({ isOpen, onClose, goal, color }) {
         }
     };
 
-    // ✅ 렌더링은 항상 하지만 isOpen일 때만 Modal 보이기
+    // 렌더링은 항상 하지만 isOpen일 때만 Modal 보이기
     if (!isOpen) {
         return <></>; // Hook 순서는 그대로 유지됨
     }

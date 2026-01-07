@@ -4,7 +4,7 @@ import GoalTile from "./GoalTile";
 import DailyActionModal from "./DailyActionModal"; // 모달 컴포넌트 이름 수정
 import { useNavigate } from "react-router-dom";
 
-export default function CheckList({ title, mainGoalId, subGoals }) {
+export default function CheckList({ title, mainGoalId, subGoals, onSaved }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedGoal, setSelectedGoal] = useState(null); // 모달에 표시할 목표 정보 저장
     const navigate = useNavigate();
@@ -86,6 +86,7 @@ export default function CheckList({ title, mainGoalId, subGoals }) {
                 onClose={closeModal}
                 goal={selectedGoal}
                 color={selectedGoal ? slotColors[selectedGoal.slotNum] : "bg-gray-200"}
+                onSaved={onSaved}
             />
 
             <div className="px-6 mt-1 flex justify-center">
