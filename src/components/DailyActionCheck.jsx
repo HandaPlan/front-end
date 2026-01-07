@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo, useEffect } from "react";
 import dayjs from "dayjs";
 
 export default function DailyActionCheck({
@@ -11,36 +11,44 @@ export default function DailyActionCheck({
 }) {
     const days = ["월", "화", "수", "목", "금", "토", "일"];
 
-    // checked_dates를 Date 객체로 변환하여 요일 추출 (0을 월요일로 변환)
-    const initialCheckedDays = checkedDate.map(date => {
-        const dayIndex = new Date(date).getDay(); // 0(일) ~ 6(토)
-        return dayIndex === 0 ? 6 : dayIndex - 1; // 0(일) → 6(일), 1(월) → 0(월), ..., 6(토) → 5(토)
-    });
+    // checkedDate -> 요일 index 배열로 변환
+    const initialCheckedDays = useMemo(() => {
+        return checkedDate.map((date) => {
+            const dayIndex = new Date(date).getDay(); // 0(일)~6(토)
+            return dayIndex === 0 ? 6 : dayIndex - 1; // 월=0 ... 일=6
+        });
+    }, [checkedDate]);
 
     // 상태로 관리하여 클릭 시 토글 가능하도록 설정
     const [checkedDays, setCheckedDays] = useState(initialCheckedDays);
 
-    const toggleDay = (index) => {
-        setCheckedDays((prev) => {
-            const updated = prev.includes(index)
-                ? prev.filter((day) => day !== index)
-                : [...prev, index];
+    // props가 바뀌면 로컬 state도 동기화
+    useEffect(() => {
+        setCheckedDays(initialCheckedDays);
+    }, [initialCheckedDays]);
 
-            // ✅ dayjs로 날짜 계산
-            const updatedDates = updated.map((dayIdx) => {
-                const today = new Date();
-                const todayIdx = today.getDay() === 0 ? 6 : today.getDay() - 1;
-                const diff = dayIdx - todayIdx;
-                const newDate = new Date(today);
-                newDate.setDate(today.getDate() + diff);
+    const toDates = (dayIdxList) => {
+        const today = new Date();
+        const todayIdx = today.getDay() === 0 ? 6 : today.getDay() - 1;
 
-                // ✅ 로컬 기준으로 YYYY-MM-DD 포맷
-                return dayjs(newDate).format("YYYY-MM-DD");
-            });
-
-            onUpdateCheckedDate(dailyActionId, updatedDates);
-            return updated;
+        return dayIdxList.map((dayIdx) => {
+            const diff = dayIdx - todayIdx;
+            const newDate = new Date(today);
+            newDate.setDate(today.getDate() + diff);
+            return dayjs(newDate).format("YYYY-MM-DD");
         });
+    };
+
+    const toggleDay = (index) => {
+        // 다음 상태를 먼저 계산 (setState updater 내부에서 부모 업데이트 호출 X)
+        const updated = checkedDays.includes(index)
+            ? checkedDays.filter((day) => day !== index)
+            : [...checkedDays, index];
+
+        setCheckedDays(updated);
+
+        const updatedDates = toDates(updated);
+        onUpdateCheckedDate?.(dailyActionId, updatedDates);
     };
 
     return (
