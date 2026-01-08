@@ -3,6 +3,7 @@ import { format, parseISO, isValid, isAfter } from "date-fns";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { MdVerified } from "react-icons/md";
 import slotColors from "../constants/soltNumMappings";
+import slotTextColors from "../constants/slotColorHex";
 import api from "../api/axiosInstance";
 
 export default function SubGoalCalendar({
@@ -52,6 +53,7 @@ export default function SubGoalCalendar({
     const endParsed = parseISO(end_date);
     return isAfter(endParsed, today); // end_date가 오늘보다 미래라면 NEXT 막기
   }, [end_date]);
+
 
   // 날짜 이동 핸들러
   const handlePrevDate = async () => {
@@ -107,13 +109,20 @@ export default function SubGoalCalendar({
     }
   };
 
-  // 진행 중인 서브골
-  const pendingGoals = Array.isArray(progress)
-    ? [...progress].sort((a, b) => (b.rate ?? 0) - (a.rate ?? 0))
-    : [];
+  // 진행중/달성 분리: API subProgress(progress) 기준으로!
+  const { pendingGoals, achievedGoals } = useMemo(() => {
+    const list = Array.isArray(progress) ? progress : [];
 
-  // 달성된 목표만 따로
-  const achievedGoals = subGoals.filter((g) => g.attainment);
+    const pending = list
+      .filter((g) => !g.attainment)
+      .sort((a, b) => (b.rate ?? 0) - (a.rate ?? 0));
+
+    const achieved = list
+      .filter((g) => g.attainment)
+      .sort((a, b) => (b.rate ?? 0) - (a.rate ?? 0));
+
+    return { pendingGoals: pending, achievedGoals: achieved };
+  }, [progress]);
 
   return (
     <div className="w-full mt-6 bg-white p-6 rounded-lg shadow-customShadow">
@@ -183,7 +192,7 @@ export default function SubGoalCalendar({
                 key={goal.id}
                 className={`inline-flex items-center gap-1 text-sm font-medium px-3 py-1 rounded-full transition ${slotColors[goal.slotNum]} bg-opacity-20`}
                 style={{
-                  color: slotColors[goal.slotNum],
+                  color: slotTextColors[goal.slotNum],
                 }}
               >
                 <MdVerified />
