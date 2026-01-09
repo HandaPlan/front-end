@@ -93,6 +93,7 @@ export default function DailyActionModal({ isOpen, onClose, goal, color, onSaved
                             key={action.dailyActionId}
                             dailyActionId={action.dailyActionId}
                             dailyActionTitle={action.title}
+                            dailyActionTargetNum={action.targetNum}
                             dailyActionContent={action.content}
                             checkedDate={action.checkedDate}
                             color={color}

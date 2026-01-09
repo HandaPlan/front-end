@@ -4,6 +4,7 @@ import dayjs from "dayjs";
 export default function DailyActionCheck({
     dailyActionId,
     dailyActionTitle,
+    dailyActionTargetNum,
     dailyActionContent,
     checkedDate,
     color,
@@ -53,7 +54,12 @@ export default function DailyActionCheck({
 
     return (
         <div className="p-4 mb-2">
-            <h3 className="font-bold text-sm mb-1">{dailyActionTitle}</h3>
+            <div className="flex justify-between items-center">
+                <h3 className="font-bold text-sm mb-1">{dailyActionTitle}</h3>
+                <div className="bg-customMain text-[10px] font-medium py-1 px-2 rounded-md text-white">
+                    {dailyActionTargetNum}회
+                </div>
+            </div>
             <p className="text-gray-600 text-xs">{dailyActionContent}</p>
             <div className="flex justify-between mt-2">
                 {days.map((day, index) => (
