@@ -62,9 +62,6 @@ export default function WelcomePage() {
                         <div className="flex flex-col items-center justify-center h-full">
                             <img
                                 src="/ServicePage1.png"
-                                {...(!isMobile && {
-                                    srcSet: "/ServicePage1@2x.png 2x, /ServicePage1@3x.png 3x",
-                                })}
                                 alt="Service_1"
                                 className="w-full max-w-[420px] h-auto mb-8 object-contain"
                                 style={{ imageRendering: "-webkit-optimize-contrast" }}
@@ -77,9 +74,6 @@ export default function WelcomePage() {
                         <div className="flex flex-col items-center justify-center h-full">
                             <img
                                 src="/ServicePage2.png"
-                                {...(!isMobile && {
-                                    srcSet: "/ServicePage2@2x.png 2x, /ServicePage2@3x.png 3x",
-                                })}
                                 alt="Service_2"
                                 className="w-full max-w-[420px] h-auto mb-8 object-contain"
                                 style={{ imageRendering: "-webkit-optimize-contrast" }}
@@ -92,9 +86,6 @@ export default function WelcomePage() {
                         <div className="flex flex-col items-center justify-center h-full">
                             <img
                                 src="/ServicePage3.png"
-                                {...(!isMobile && {
-                                    srcSet: "/ServicePage3@2x.png 2x, /ServicePage3@3x.png 3x",
-                                })}
                                 alt="Service_3"
                                 className="w-full max-w-[420px] h-auto mb-8 object-contain"
                                 style={{ imageRendering: "-webkit-optimize-contrast" }}
@@ -107,9 +98,6 @@ export default function WelcomePage() {
                         <div className="flex flex-col items-center justify-center h-full">
                             <img
                                 src="/ServicePage4.png"
-                                {...(!isMobile && {
-                                    srcSet: "/ServicePage4@2x.png 2x, /ServicePage4@3x.png 3x",
-                                })}
                                 alt="Service_4"
                                 className="w-full max-w-[420px] h-auto mb-8 object-contain"
                                 style={{ imageRendering: "-webkit-optimize-contrast" }}
