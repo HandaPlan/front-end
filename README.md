@@ -1,8 +1,68 @@
-# React + Vite
+![alt text](image.png)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 0. 한 줄 소개
 
-Currently, two official plugins are available:
+**한다라트는 만다라트 구조를 기반으로, 목표를 행동 단위로 분해해 실행과 기록을 관리하는 목표 관리 서비스입니다.**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 1. 서비스 제작 동기
+
+‘갓생’이라는 표현이 일상화될 만큼, 많은 사람들이 더 나은 하루와 성취를 원하고 있습니다.
+하지만 목표를 세우는 것에서 그치고, 무엇을 어떻게 실천해야 할지 정리하지 못해
+실행으로 이어지지 않는 경우가 많다고 느꼈습니다.
+
+큰 목표를 달성하기 위해서는 막연한 다짐이 아니라,
+오늘 당장 수행할 수 있는 구체적인 행동 단위로의 분해가 필요하다고 생각했습니다.
+
+한다라트는 만다라트 구조를 활용해 하나의 목표를 세부 목표와 일일 행동으로 나누고,
+실천 과정을 기록하며 목표 달성까지의 흐름을 관리할 수 있도록 기획되었습니다.
+
+## 2. 서비스 주요 기능
+
+한다라트는 단순한 목표 기록 서비스가 아니라,  
+**목표를 실행 가능한 단위로 분해하고 지속적인 실천을 유도하는 구조**에 집중했습니다.
+
+### 만다라트 기반 목표 구조
+
+- 하나의 메인 목표를 8개의 세부 목표로 확장
+- 각 세부 목표를 다시 **일일 행동 단위**로 분해
+- 목표 → 행동으로 자연스럽게 이어지는 흐름 설계
+
+### 일일 행동 관리 및 체크
+
+- 하루 단위 행동 체크
+- 실행 이력을 기반으로 목표 진행 상황 관리
+- 실천 기록이 누적되며 성취감을 느낄 수 있도록 UX 구성
+
+### 진행률 시각화
+
+- 목표 달성률을 직관적으로 확인할 수 있는 UI 제공
+- 사용자가 현재 목표 상태를 한눈에 파악 가능
+
+### 목표 관리 기능
+
+- 목표 생성 / 수정 / 삭제
+- 현재 집중할 대표 목표 설정 기능
+
+### 가져오기 기능
+
+- 기존에 생성한 목표 데이터를 불러와 다시 활용할 수 있는 기능
+- 반복적으로 사용하는 목표 구조를 재사용하여 목표 설정 과정의 부담을 줄임
+
+### 마이페이지
+
+- 사용자 계정 정보 확인 및 수정
+- 로그아웃 기능
+- 계정 삭제 기능 제공
+
+## 3. 기술 스택
+
+- **Framework**: React 18.3.1
+- **Language**: JavaScript (ES6+)
+- **Build Tool**: Vite 5.4.10
+- **State Management**: React Context API
+- **HTTP Client**: Axios
+- **Styling**: Tailwind CSS
+- **Code Quality**: ESLint
+- **Deployment**: Vercel
+
+## 4. 프로젝트 구조
