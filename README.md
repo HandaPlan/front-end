@@ -1,6 +1,5 @@
 <img width="3320" height="2419" alt="image" src="https://github.com/user-attachments/assets/38b21cb8-159a-485c-b3b6-cd8a3f2bc961" />
 
-
 ## 0. 한 줄 소개
 
 **한다라트는 만다라트 구조를 기반으로, 목표를 행동 단위로 분해해 실행과 기록을 관리하는 목표 관리 서비스입니다.**
@@ -65,5 +64,3 @@
 - **Styling**: Tailwind CSS
 - **Code Quality**: ESLint
 - **Deployment**: Vercel
-
-## 4. 프로젝트 구조
