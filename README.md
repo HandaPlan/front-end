@@ -1,4 +1,4 @@
-![alt text](image.png)
+<img width="3320" height="2419" alt="image" src="https://github.com/user-attachments/assets/38b21cb8-159a-485c-b3b6-cd8a3f2bc961" />
 
 ## 0. 한 줄 소개
 
@@ -64,5 +64,10 @@
 - **Styling**: Tailwind CSS
 - **Code Quality**: ESLint
 - **Deployment**: Vercel
+  <<<<<<< HEAD
 
 ## 4. 프로젝트 구조
+
+=======
+
+> > > > > > > e3ccd093cf08ab5986bd0fda4aae483c81e91838
